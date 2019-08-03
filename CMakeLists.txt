@@ -77,14 +77,14 @@ add_custom_command(
  add_custom_command(
    TARGET SimpleSlicer POST_BUILD
    COMMAND ${CMAKE_COMMAND} -E copy_if_different
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_ximgproc346d.dll
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_imgcodecs346d.dll
-        ${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_highgui346d.dll
-        ${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_videoio346d.dll
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_imgproc346d.dll
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_core346d.dll
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_calib3d346d.dll
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_features2d346d.dll
- 		${OpenCV_DIR}/bin/$<CONFIGURATION>/opencv_flann346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_ximgproc346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_imgcodecs346d.dll
+        ${OpenCV_DIR}/bin/Debug/opencv_highgui346d.dll
+        ${OpenCV_DIR}/bin/Debug/opencv_videoio346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_imgproc346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_core346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_calib3d346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_features2d346d.dll
+ 		${OpenCV_DIR}/bin/Debug/opencv_flann346d.dll
  		$<TARGET_FILE_DIR:SimpleSlicer>
  )

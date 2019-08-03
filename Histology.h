@@ -38,6 +38,10 @@ namespace histology {
 
         cv::Mat readImage(const QString path);
 
+        const QString &lastLocation() const
+        {
+            return location_;
+        }
     private:
         QString location_;
         std::map<QString, CancerType> classes_;

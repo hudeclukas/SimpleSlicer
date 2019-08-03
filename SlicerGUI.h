@@ -15,6 +15,7 @@ class Ui_SimpleGUI;
 
 struct Slice : ClickSlice
 {
+    Slice() {}
     Slice(ClickSlice &cls, cv::Mat &slice_, cv::Mat &histogram_): ClickSlice(cls.x, cls.y, cls.imageWindow)
     {
         path = cls.path;
@@ -22,24 +23,25 @@ struct Slice : ClickSlice
         histogram_.copyTo(histogram);
     }
 
+    QString type;
     cv::Mat slice;
     cv::Mat histogram;
 };
 
-struct SlicePair
+struct SlicePairNames
 {
-    SlicePair() : one(nullptr), two(nullptr) {}
-    SlicePair(Slice one, Slice two, int id1, int id2)
+    SlicePairNames() {}
+    SlicePairNames(QString &&name1, QString &&name2) : name1(name1), name2(name2) {}
+    QString getCSVLine()
     {
-        this->one = new Slice(one);
-        this->two = new Slice(two);
-        this->id1 = id1;
-        this->id2 = id2;
+        return name1 + ","+ name2;
     }
-    Slice* one;
-    Slice* two;
-    int id1 = -1;
-    int id2 = -1;
+    QString getCSVLineTif()
+    {
+        return name1 + ".tif," + name2 + ".tif";
+    }
+    QString name1;
+    QString name2;
 };
 
 class SlicerGUI : public QMainWindow
@@ -50,9 +52,8 @@ public:
     ~SlicerGUI();
 
 public slots:
-    void on_actionLoad_Directory();
-    void on_actionSave_To();
-    void on_actionExit();
+    void on_actionLoad_Directory_triggered();
+    void on_actionExit_triggered();
 
     void onChange_ComboBox1(const QString& text);
     void onChange_ComboBox2(const QString& text);
@@ -63,7 +64,9 @@ public slots:
     void onChange_PairsList();
 
     void onEditSliceName();
-    void onKeepPressed();
+    void on_keepBtn_clicked();
+    void on_removeBtn_clicked();
+    void on_saveAll_clicked();
 
     void updateNameEdit(QString file1_info = QString(), QString file2_info = QString());
     void recieveSlice(cv::Mat img, cv::Mat histogram, ClickSlice slice);
@@ -72,7 +75,9 @@ private:
     Ui_SimpleGUI* ui;
     CV_Viewer* viewer_;
     histology::Dataset* dataset_histology_;
-    std::map<QString, SlicePair> slices_;
+
+    std::map<QString, Slice> slices_;
+    std::map<QString, SlicePairNames> slicePairNames_;
 
     int lastID1 = 0;
     int lastID2 = 0;

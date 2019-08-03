@@ -70,6 +70,6 @@ QStringList histology::Dataset::getCancerTypeImagesList(QString type)
 
 cv::Mat histology::Dataset::readImage(const QString path)
 {
-    lastLoadedImage = cv::imread(path.toStdString(), cv::IMREAD_ANYCOLOR);
+    lastLoadedImage = cv::imread(path.toStdString(), cv::IMREAD_ANYCOLOR | cv::IMREAD_ANYDEPTH);
     return lastLoadedImage;
 }

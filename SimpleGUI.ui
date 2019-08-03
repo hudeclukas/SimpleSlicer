@@ -295,6 +295,22 @@
                   </property>
                  </spacer>
                 </item>
+                <item>
+                 <widget class="QSpinBox" name="pairsCount">
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::NoButtons</enum>
+                  </property>
+                  <property name="maximum">
+                   <number>999999999</number>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item>
@@ -347,20 +363,30 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="nameLbl">
+               <widget class="QLabel" name="name1Lbl">
                 <property name="text">
-                 <string>&amp;Name:</string>
+                 <string>&amp;Name 1:</string>
                 </property>
                 <property name="textInteractionFlags">
                  <set>Qt::LinksAccessibleByMouse</set>
                 </property>
                 <property name="buddy">
-                 <cstring>sliceNameEdit</cstring>
+                 <cstring>slice1NameEdit</cstring>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="sliceNameEdit"/>
+               <widget class="QLineEdit" name="slice1NameEdit"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="name2Lbl">
+                <property name="text">
+                 <string>Name 2:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="slice2NameEdit"/>
               </item>
               <item>
                <widget class="QPushButton" name="saveAll">
@@ -468,7 +494,7 @@
   <tabstop>removeBtn</tabstop>
   <tabstop>confirmSave</tabstop>
   <tabstop>sliceSize</tabstop>
-  <tabstop>sliceNameEdit</tabstop>
+  <tabstop>slice1NameEdit</tabstop>
   <tabstop>saveAll</tabstop>
   <tabstop>id1</tabstop>
   <tabstop>id2</tabstop>

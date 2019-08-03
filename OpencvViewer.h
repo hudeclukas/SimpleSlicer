@@ -12,9 +12,10 @@ typedef std::string ImageWindow;
 struct ClickSlice
 {
     std::string path;
+    ClickSlice() {};
     ClickSlice(int x, int y, std::string iw) : x(x), y(y), imageWindow(iw) {}
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
     int size = 0;
     ImageWindow imageWindow;
 };
